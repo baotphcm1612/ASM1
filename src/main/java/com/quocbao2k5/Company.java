@@ -7,6 +7,10 @@ import java.util.List;
 
 public class Company {
     private List<Employee> employees = new ArrayList<>();
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
     
     public void addEmployee(int type) {
         switch (type) {

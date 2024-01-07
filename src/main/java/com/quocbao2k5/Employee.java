@@ -60,11 +60,16 @@ public class Employee {
         }
     }
 
+    public final double getNetSalary() {
+        return this.getIncomeMoney() - this.getTax();
+    }
+
     public void showInfo() {
         System.out.println("ID: " + this.getId());
         System.out.println("Name: " + this.getName());
         NumberFormat format = NumberFormat.getNumberInstance(Locale.GERMAN);
         System.out.println("Salary: " + format.format(this.salary));
+        System.out.println("Net salary: " + format.format(this.getNetSalary()));
     }
 
     public Employee setInfo() {
