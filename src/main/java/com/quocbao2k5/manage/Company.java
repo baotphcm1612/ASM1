@@ -12,6 +12,11 @@ public class Company {
         return employees;
     }
     
+    public void clearList() {
+        if(employees != null && !employees.isEmpty())
+            this.employees.clear();
+    }
+    
     public void addEmployee(int type) {
         switch (type) {
             case 1:

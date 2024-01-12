@@ -8,7 +8,7 @@ public class Employee {
     private String id;
     private String name;
     private double salary;
-    public static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
+    protected static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
 
     public Employee() {
         
@@ -78,8 +78,7 @@ public class Employee {
         System.out.print("Input full name: ");
         this.setName(sc.nextLine());
         System.out.print("Input salary: ");
-        this.setSalary(sc.nextDouble());
-        sc.nextLine();
+        this.setSalary(Double.parseDouble(sc.nextLine()));
         return this;
     }
 
@@ -106,7 +105,7 @@ public class Employee {
                 this.salary = Double.parseDouble(salary);
             }
         } catch (Exception e) {
-            System.out.println("Update information failure!");
+            System.out.println("Update information failed!");
         }
     }
 }
