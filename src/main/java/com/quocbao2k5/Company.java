@@ -1,10 +1,9 @@
-package com.quocbao2k5.manage;
+package com.quocbao2k5;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import com.quocbao2k5.employee.*;
 
 public class Company {
     private List<Employee> employees = new ArrayList<>();
