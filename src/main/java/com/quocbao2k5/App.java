@@ -40,9 +40,10 @@ public class App
         System.out.println("*   Key 6: Find employees by salary      *");
         System.out.println("*   Key 7: Sort list by name             *");
         System.out.println("*   Key 8: Sort list by salary           *");
-        System.out.println("*   Key 9: Top 5 Employee                *");
+        System.out.println("*   Key 9: Top 5 Employees               *");
         System.out.println("*   Key 0: Exit                          *");
         System.out.println("******************************************");
+        System.out.print("*   Input key: ");
     }
 
     public static void selection(int select) {
@@ -50,12 +51,12 @@ public class App
             case 1:
                 menuAddEmployee();
                 try {
-                    int type = sc.nextInt();
+                    System.out.print("*   Input key: ");
+                    int type = Integer.parseInt(sc.nextLine());
                     company.addEmployee(type);
                     sc.nextLine();
                 } catch (Exception e) {
                     System.out.println("Wrong type!");
-                    selection(1);
                 }
                 break;
             case 2:
@@ -70,19 +71,19 @@ public class App
                 }
                 break;
             case 3:
-                System.out.println("Input ID employee: ");
+                System.out.print("Input ID employee: ");
                 company.findEmployee(sc.nextLine());
                 break;
             case 4:
-                System.out.println("Input ID employee: ");
+                System.out.print("Input ID employee: ");
                 company.deleteEmployee(sc.nextLine());
                 break;
             case 5:
-                System.out.println("Input ID employee: ");
+                System.out.print("Input ID employee: ");
                 company.updateInfo(sc.nextLine());
                 break;
             case 6:
-                System.out.println("Input salary: ");
+                System.out.print("Input salary: ");
                 company.filterEmployeeBySalary(sc.nextDouble());
                 sc.nextLine();
                 break;
