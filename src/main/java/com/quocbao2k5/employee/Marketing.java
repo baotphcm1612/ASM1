@@ -1,4 +1,4 @@
-package com.quocbao2k5;
+package com.quocbao2k5.employee;
 
 import java.text.NumberFormat;
 import java.util.Locale;

@@ -1,7 +1,8 @@
-package com.quocbao2k5;
+package com.quocbao2k5.manage;
 
 import java.util.Locale;
 import java.util.Scanner;
+import com.quocbao2k5.employee.*;
 
 public class App
 {
