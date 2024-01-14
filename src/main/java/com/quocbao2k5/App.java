@@ -22,7 +22,7 @@ public class App
         try {
             int select = Integer.parseInt(sc.nextLine());
             selection(select);
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             System.out.println("Wrong selection!");
             run();
         }

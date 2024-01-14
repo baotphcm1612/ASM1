@@ -14,7 +14,7 @@ public class Company {
     
     public void clearList() {
         if(!getEmployees().isEmpty())
-            this.employees.clear();
+            this.getEmployees().clear();
     }
     
     public void addEmployee(int type) {
@@ -79,6 +79,7 @@ public class Company {
     public void sortBySalary() {
         if(!employees.isEmpty()) {
             Collections.sort(employees,Comparator.comparing(Employee::getSalary).reversed());
+            System.out.println("Done!");
         }
         else {
             System.out.println("List is empty!");
