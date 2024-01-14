@@ -24,7 +24,7 @@ public class Manager extends Employee {
     }
 
     @Override
-    public double getIncomeMoney() {
+    public double calcIncomeMoney() {
         return this.getSalary() + resMoney;
     }
 
@@ -32,15 +32,18 @@ public class Manager extends Employee {
     public void showInfo() {
         super.showInfo();
         NumberFormat format = NumberFormat.getNumberInstance(Locale.GERMAN);
-        System.out.println("ResMoney: " + format.format(resMoney));
+        System.out.println("ResMoney: " + format.format(this.getResMoney()));
     }
 
     @Override
     public Employee setInfo() {
-        super.setInfo();
-        System.out.print("Input ResMoney: ");
-        this.setResMoney(sc.nextDouble());
-        sc.nextLine();
+        try {
+            super.setInfo();
+            System.out.print("Input ResMoney: ");
+            this.setResMoney(Double.parseDouble(sc.nextLine()));
+        } catch (Exception e) {
+            System.out.println("Set information failed!");
+        }
         return this;
     }
 

@@ -44,16 +44,16 @@ public class Employee {
         this.salary = salary;
     }
 
-    public double getIncomeMoney() {
+    public double calcIncomeMoney() {
         return this.getSalary();
     }
 
     public final double getTax() {
-        if(this.getIncomeMoney() > 15000000) {
-            return 600000 + (this.getIncomeMoney() - 15000000) * 0.12;
+        if(this.calcIncomeMoney() > 15000000) {
+            return 600000 + (this.calcIncomeMoney() - 15000000) * 0.12;
         }
-        else if(this.getIncomeMoney() >= 9000000) {
-            return (this.getIncomeMoney() - 9000000) * 0.1;
+        else if(this.calcIncomeMoney() >= 9000000) {
+            return (this.calcIncomeMoney() - 9000000) * 0.1;
         }
         else {
             return 0;
@@ -61,7 +61,7 @@ public class Employee {
     }
 
     public final double getNetSalary() {
-        return this.getIncomeMoney() - this.getTax();
+        return this.calcIncomeMoney() - this.getTax();
     }
 
     public void showInfo() {
@@ -73,12 +73,16 @@ public class Employee {
     }
 
     public Employee setInfo() {
-        System.out.print("Input ID: ");
-        this.setId(sc.nextLine());
-        System.out.print("Input full name: ");
-        this.setName(sc.nextLine());
-        System.out.print("Input salary: ");
-        this.setSalary(Double.parseDouble(sc.nextLine()));
+        try {
+            System.out.print("Input ID: ");
+            this.setId(sc.nextLine());
+            System.out.print("Input full name: ");
+            this.setName(sc.nextLine());
+            System.out.print("Input salary: ");
+            this.setSalary(Double.parseDouble(sc.nextLine()));
+        } catch (Exception e) {
+            System.out.println("Set information failed!");
+        }
         return this;
     }
 
@@ -96,13 +100,13 @@ public class Employee {
             System.out.print("Input salary: ");
             salary = sc.nextLine();
             if(!id.isBlank()) {
-                this.id = id;
+                this.setId(id);
             }
             if(!name.isBlank()) {
-                this.name = name;
+                this.setName(name);
             }
             if(!salary.isBlank()) {
-                this.salary = Double.parseDouble(salary);
+                this.setSalary(Double.parseDouble(salary));
             }
         } catch (Exception e) {
             System.out.println("Update information failed!");

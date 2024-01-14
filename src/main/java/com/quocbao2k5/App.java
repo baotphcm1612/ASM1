@@ -53,7 +53,6 @@ public class App
                     System.out.print("*   Input key: ");
                     int type = Integer.parseInt(sc.nextLine());
                     company.addEmployee(type);
-                    sc.nextLine();
                 } catch (Exception e) {
                     System.out.println("Wrong type!");
                 }
@@ -70,21 +69,36 @@ public class App
                 }
                 break;
             case 3:
-                System.out.print("Input ID employee: ");
-                company.findEmployee(sc.nextLine());
+                if(!company.getEmployees().isEmpty()) {
+                    System.out.print("Input ID employee: ");
+                    Employee temp = company.findEmployee(sc.nextLine());
+                    if(temp != null) {
+                        temp.showInfo();
+                    }
+                    else {
+                        System.out.println("Cannot found this employee!");
+                    }
+                }
+                else{
+                    System.out.println("List is empty!");
+                }
                 break;
             case 4:
                 System.out.print("Input ID employee: ");
                 company.deleteEmployee(sc.nextLine());
                 break;
             case 5:
-                System.out.print("Input ID employee: ");
-                company.updateInfo(sc.nextLine());
+                if(!company.getEmployees().isEmpty()) {
+                    System.out.print("Input ID employee: ");
+                    company.updateInfo(sc.nextLine());
+                }
+                else {
+                    System.out.println("List is empty!");
+                }
                 break;
             case 6:
                 System.out.print("Input salary: ");
-                company.filterEmployeeBySalary(sc.nextDouble());
-                sc.nextLine();
+                company.filterEmployeeBySalary(Double.parseDouble(sc.nextLine()));
                 break;
             case 7:
                 company.sortByName();

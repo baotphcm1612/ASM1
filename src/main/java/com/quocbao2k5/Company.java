@@ -13,7 +13,7 @@ public class Company {
     }
     
     public void clearList() {
-        if(employees != null && !employees.isEmpty())
+        if(!getEmployees().isEmpty())
             this.employees.clear();
     }
     
@@ -21,15 +21,15 @@ public class Company {
         switch (type) {
             case 1:
                 System.out.println("Add employee");
-                employees.add(new Employee().setInfo());
+                this.getEmployees().add(new Employee().setInfo());
                 break;
             case 2:
                 System.out.println("Add marketing employee");
-                employees.add(new Marketing().setInfo());
+                this.getEmployees().add(new Marketing().setInfo());
                 break;
             case 3:
                 System.out.println("Add manager");
-                employees.add(new Manager().setInfo());
+                this.getEmployees().add(new Manager().setInfo());
                 break;
             default:
                 break;
@@ -37,8 +37,9 @@ public class Company {
     }
 
     public Employee findEmployee(String id) {
-        if(employees != null && !employees.isEmpty()) {
-            for(Employee temp : employees) {
+        
+        if(!this.getEmployees().isEmpty()) {
+            for(Employee temp : this.getEmployees()) {
                 if(temp.getId().equals(id)) {
                     return temp;
                 }
@@ -48,9 +49,9 @@ public class Company {
     }
 
     public void filterEmployeeBySalary(double salary) {
-        if(employees != null && !employees.isEmpty()) {
+        if(!this.getEmployees().isEmpty()) {
             boolean isFound = false;
-            for(Employee temp : employees) {
+            for(Employee temp : this.getEmployees()) {
                 if(temp.getSalary() == salary) {
                     temp.showInfo();
                     isFound = true;
@@ -66,7 +67,7 @@ public class Company {
     }
 
     public void sortByName() {
-        if(employees != null && !employees.isEmpty()) {
+        if(!employees.isEmpty()) {
             Collections.sort(employees,Comparator.comparing(Employee::getName));
             System.out.println("Done!");
         }
@@ -76,7 +77,7 @@ public class Company {
     }
 
     public void sortBySalary() {
-        if(employees != null && !employees.isEmpty()) {
+        if(!employees.isEmpty()) {
             Collections.sort(employees,Comparator.comparing(Employee::getSalary).reversed());
         }
         else {
@@ -85,7 +86,7 @@ public class Company {
     }
 
     public void deleteEmployee(String id) {
-        if(employees != null && !employees.isEmpty()) {
+        if(!employees.isEmpty()) {
             if(employees.removeIf(temp -> temp.getId().equals(id))) {
                 System.out.println("Delete success!");
             }
@@ -100,6 +101,9 @@ public class Company {
 
     public void updateInfo(String id) {
         Employee temp = findEmployee(id);
-        temp.updateInfo();
+        if(temp != null)
+            temp.updateInfo();
+        else 
+            System.out.println("Cannot found employee!");
     }
 }

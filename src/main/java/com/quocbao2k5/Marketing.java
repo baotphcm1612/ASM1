@@ -26,34 +26,37 @@ public class Marketing extends Employee {
     }
 
     public double getBonus() {
-        return bonus;
+        return this.bonus;
     }
 
     public double getCommission() {
-        return commission;
+        return this.commission;
     }
 
     @Override
-    public double getIncomeMoney() {
-        return this.getSalary() + bonus + commission;
+    public double calcIncomeMoney() {
+        return this.getSalary() + this.getBonus() + this.getCommission();
     }
 
     @Override
     public void showInfo() {
         super.showInfo();
         NumberFormat format = NumberFormat.getNumberInstance(Locale.GERMAN);
-        System.out.println("Bonus: " + format.format(bonus));
-        System.out.println("Commission: " + format.format(commission));
+        System.out.println("Bonus: " + format.format(this.getBonus()));
+        System.out.println("Commission: " + format.format(this.getCommission()));
     }
 
     @Override
     public Employee setInfo() {
-        super.setInfo();
-        System.out.print("Input Bonus: ");
-        this.setBonus(sc.nextDouble());
-        System.out.print("Input comission: ");
-        this.setCommission(sc.nextDouble());
-        sc.nextLine();
+        try {
+            super.setInfo();
+            System.out.print("Input Bonus: ");
+            this.setBonus(Double.parseDouble(sc.nextLine()));
+            System.out.print("Input comission: ");
+            this.setCommission(Double.parseDouble(sc.nextLine()));
+        } catch (Exception e) {
+            System.out.println("Set information failed!");
+        }
         return this;
     }
 
@@ -67,10 +70,10 @@ public class Marketing extends Employee {
             System.out.print("Input commission: ");
             comission = sc.nextLine();
             if(!bonus.isBlank()) {
-                this.bonus = Double.parseDouble(bonus);
+                this.setBonus(Double.parseDouble(bonus));
             }
             if(!comission.isBlank()) {
-                this.commission = Double.parseDouble(comission);
+                this.setCommission(Double.parseDouble(comission));
             }
         } catch (Exception e) {
             System.out.println("Update information failure!");
