@@ -58,6 +58,7 @@ public class App
                 menuAddEmployee();
                 try {
                     System.out.print("*   Input key: ");
+                    sc.nextInt();
                     int type = Integer.parseInt(sc.nextLine());
                     company.addEmployee(type);
                     System.out.println("Done!");

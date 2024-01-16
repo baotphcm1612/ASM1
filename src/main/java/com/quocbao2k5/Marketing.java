@@ -5,7 +5,7 @@ import java.util.Locale;
 
 public class Marketing extends Employee {
     private double bonus;
-    private double commission;
+    private double sales;
 
     public Marketing() {
 
@@ -14,28 +14,28 @@ public class Marketing extends Employee {
     public Marketing(String id, String name, double salary, double bonus, double comission) {
         super(id, name, salary);
         this.bonus = bonus;
-        this.commission = comission;
+        this.sales = comission;
     }
 
     public void setBonus(double bonus) {
         this.bonus = bonus;
     }
 
-    public void setCommission(double commission) {
-        this.commission = commission;
+    public void setSales(double sales) {
+        this.sales = sales;
     }
 
     public double getBonus() {
         return this.bonus;
     }
 
-    public double getCommission() {
-        return this.commission;
+    public double getSales() {
+        return this.sales;
     }
 
     @Override
     public double calcIncomeMoney() {
-        return this.getSalary() + this.getBonus() + this.getCommission();
+        return this.getSalary() + this.getBonus() + this.getSales();
     }
 
     @Override
@@ -43,7 +43,7 @@ public class Marketing extends Employee {
         super.showInfo();
         NumberFormat format = NumberFormat.getNumberInstance(Locale.GERMAN);
         System.out.println("Bonus: " + format.format(this.getBonus()));
-        System.out.println("Commission: " + format.format(this.getCommission()));
+        System.out.println("sales: " + format.format(this.getSales()));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Marketing extends Employee {
             System.out.print("Input Bonus: ");
             this.setBonus(Double.parseDouble(sc.nextLine()));
             System.out.print("Input comission: ");
-            this.setCommission(Double.parseDouble(sc.nextLine()));
+            this.setSales(Double.parseDouble(sc.nextLine()));
         } catch (Exception e) {
             System.out.println("Set information failed!");
         }
@@ -67,13 +67,13 @@ public class Marketing extends Employee {
             String bonus = null, comission = null;
             System.out.print("Input bonus: ");
             bonus = sc.nextLine();
-            System.out.print("Input commission: ");
+            System.out.print("Input sales: ");
             comission = sc.nextLine();
             if(!bonus.isBlank()) {
                 this.setBonus(Double.parseDouble(bonus));
             }
             if(!comission.isBlank()) {
-                this.setCommission(Double.parseDouble(comission));
+                this.setSales(Double.parseDouble(comission));
             }
         } catch (Exception e) {
             System.out.println("Update information failure!");
