@@ -30,7 +30,7 @@ public class App
             selection(select);
         } catch (NumberFormatException e) {
             clearScreen();
-            System.out.println("Wrong selection!");
+            System.out.println("Wrong selection!!");
             run();
         }
     }
