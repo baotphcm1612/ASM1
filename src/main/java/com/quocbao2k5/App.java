@@ -7,12 +7,18 @@ public class App
     private static Company company = new Company();
     private static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
 
+    public static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+    }
+
     public static void main( String[] args )
     {
         while(true) {
             run();
             System.out.print("Press enter to continue...");
             sc.nextLine();
+            clearScreen();
         }
     }
 
@@ -23,6 +29,7 @@ public class App
             int select = Integer.parseInt(sc.nextLine());
             selection(select);
         } catch (NumberFormatException e) {
+            clearScreen();
             System.out.println("Wrong selection!");
             run();
         }
@@ -53,6 +60,7 @@ public class App
                     System.out.print("*   Input key: ");
                     int type = Integer.parseInt(sc.nextLine());
                     company.addEmployee(type);
+                    System.out.println("Done!");
                 } catch (Exception e) {
                     System.out.println("Wrong type!");
                 }
@@ -130,7 +138,7 @@ public class App
         System.out.println("******************************************");
         System.out.println("*   Key 1: Add an employee               *");
         System.out.println("*   Key 2: Add a marketing employee      *");
-        System.out.println("*   Key 3: Add an manager                *");
+        System.out.println("*   Key 3: Add a manager                 *");
         System.out.println("******************************************");
     }
 }

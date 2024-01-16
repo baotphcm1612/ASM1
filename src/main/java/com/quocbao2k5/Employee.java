@@ -88,8 +88,7 @@ public class Employee {
 
     public void updateInfo() {
         try {
-            String id = null, name = null;
-            String salary = null;
+            String id = null, name = null, salary = null;
             this.showInfo();
             System.out.println("------------------------");
             System.out.println("Input new information or press Enter to skip.");

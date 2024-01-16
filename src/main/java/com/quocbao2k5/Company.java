@@ -32,6 +32,7 @@ public class Company {
                 this.getEmployees().add(new Manager().setInfo());
                 break;
             default:
+                System.out.println("Wrong type!");
                 break;
         }
     }
@@ -67,7 +68,7 @@ public class Company {
     }
 
     public void sortByName() {
-        if(!employees.isEmpty()) {
+        if(!this.getEmployees().isEmpty()) {
             Collections.sort(employees,Comparator.comparing(Employee::getName));
             System.out.println("Done!");
         }
@@ -77,8 +78,8 @@ public class Company {
     }
 
     public void sortBySalary() {
-        if(!employees.isEmpty()) {
-            Collections.sort(employees,Comparator.comparing(Employee::getSalary).reversed());
+        if(!this.getEmployees().isEmpty()) {
+            Collections.sort(this.getEmployees(),Comparator.comparing(Employee::getNetSalary).reversed());
             System.out.println("Done!");
         }
         else {
@@ -87,8 +88,8 @@ public class Company {
     }
 
     public void deleteEmployee(String id) {
-        if(!employees.isEmpty()) {
-            if(employees.removeIf(temp -> temp.getId().equals(id))) {
+        if(!this.getEmployees().isEmpty()) {
+            if(this.getEmployees().removeIf(temp -> temp.getId().equals(id))) {
                 System.out.println("Delete success!");
             }
             else {
