@@ -6,30 +6,43 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Company {
-    private List<Employee> employees = new ArrayList<>();
+    public static List<Employee> employees = new ArrayList<>();
 
-    public List<Employee> getEmployees() {
-        return employees;
-    }
+    private static final int EMPLOYEE = 1;
+    private static final int MARKETING = 2;
+    private static final int MANAGER = 3;
     
-    public void clearList() {
-        if(!getEmployees().isEmpty())
-            this.getEmployees().clear();
-    }
-    
-    public void addEmployee(int type) {
+    public static void addEmployee(int type) {
         switch (type) {
-            case 1:
+            case EMPLOYEE:
                 System.out.println("Add employee");
-                this.getEmployees().add(new Employee().setInfo());
+                Employee employee = new Employee().inputInfo();
+                if(employees.add(employee)) {
+                    System.out.println("Done!");
+                }
+                else {
+                    System.out.println("Add employee failed!");
+                }
                 break;
-            case 2:
+            case MARKETING:
                 System.out.println("Add marketing employee");
-                this.getEmployees().add(new Marketing().setInfo());
+                Employee marketing = new Marketing().inputInfo();
+                if(employees.add(marketing)) {
+                    System.out.println("Done!");
+                }
+                else {
+                    System.out.println("Add marketing failed!");
+                }
                 break;
-            case 3:
+            case MANAGER:
                 System.out.println("Add manager");
-                this.getEmployees().add(new Manager().setInfo());
+                Employee manager = new Manager().inputInfo();
+                if(employees.add(manager)) {
+                    System.out.println("Done!");
+                }
+                else {
+                    System.out.println("Add manager failed!");
+                }
                 break;
             default:
                 System.out.println("Wrong type!");
@@ -37,10 +50,9 @@ public class Company {
         }
     }
 
-    public Employee findEmployee(String id) {
-        
-        if(!this.getEmployees().isEmpty()) {
-            for(Employee temp : this.getEmployees()) {
+    public static Employee findEmployee(String id) {
+        if(!employees.isEmpty()) {
+            for(Employee temp : employees) {
                 if(temp.getId().equals(id)) {
                     return temp;
                 }
@@ -49,10 +61,10 @@ public class Company {
         return null;
     }
 
-    public void filterEmployeeBySalary(double salary) {
-        if(!this.getEmployees().isEmpty()) {
+    public static void filterEmployeeBySalary(double salary) {
+        if(!employees.isEmpty()) {
             boolean isFound = false;
-            for(Employee temp : this.getEmployees()) {
+            for(Employee temp : employees) {
                 if(temp.getSalary() == salary) {
                     temp.showInfo();
                     isFound = true;
@@ -62,13 +74,10 @@ public class Company {
                 System.out.println("Employee not found!");
             }
         }
-        else {
-            System.out.println("List is empty!");
-        }
     }
 
-    public void sortByName() {
-        if(!this.getEmployees().isEmpty()) {
+    public static void sortByName() {
+        if(!employees.isEmpty()) {
             Collections.sort(employees,Comparator.comparing(Employee::getName));
             System.out.println("Done!");
         }
@@ -77,9 +86,9 @@ public class Company {
         }
     }
 
-    public void sortBySalary() {
-        if(!this.getEmployees().isEmpty()) {
-            Collections.sort(this.getEmployees(),Comparator.comparing(Employee::getNetSalary).reversed());
+    public static void sortBySalary() {
+        if(!employees.isEmpty()) {
+            Collections.sort(employees,Comparator.comparing(Employee::getNetSalary).reversed());
             System.out.println("Done!");
         }
         else {
@@ -87,25 +96,24 @@ public class Company {
         }
     }
 
-    public void deleteEmployee(String id) {
-        if(!this.getEmployees().isEmpty()) {
-            if(this.getEmployees().removeIf(temp -> temp.getId().equals(id))) {
+    public static void deleteEmployee(String id) {
+        if(!employees.isEmpty()) {
+            if(employees.removeIf(temp -> temp.getId().equals(id))) {
                 System.out.println("Delete success!");
             }
             else {
                 System.out.println("Employee not found!");
             }
         }
-        else {
-            System.out.println("List is empty!");
-        }
     }
-
-    public void updateInfo(String id) {
+ 
+    public static void updateInfo(String id) {
         Employee temp = findEmployee(id);
         if(temp != null)
             temp.updateInfo();
         else 
             System.out.println("Cannot found employee!");
     }
+
+    
 }

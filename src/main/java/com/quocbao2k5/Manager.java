@@ -6,15 +6,6 @@ import java.util.Locale;
 public class Manager extends Employee {
     private double resMoney;
 
-    public Manager() {
-
-    }
-
-    public Manager(String id, String name, double salary, double resMoney) {
-        super(id, name, salary);
-        this.resMoney = resMoney;
-    }
-
     public void setResMoney(double resMoney) {
         this.resMoney = resMoney;
     }
@@ -36,9 +27,9 @@ public class Manager extends Employee {
     }
 
     @Override
-    public Employee setInfo() {
+    public Employee inputInfo() {
         try {
-            super.setInfo();
+            super.inputInfo();
             System.out.print("Input ResMoney: ");
             this.setResMoney(Double.parseDouble(sc.nextLine()));
         } catch (Exception e) {
@@ -51,9 +42,8 @@ public class Manager extends Employee {
     public void updateInfo() {
         try {
             super.updateInfo();
-            String ResMoney = null;
             System.out.print("Input ResMoney: ");
-            ResMoney = sc.nextLine();
+            String ResMoney = sc.nextLine();
             if(!ResMoney.isBlank()) {
                 this.resMoney = Double.parseDouble(ResMoney);
             }

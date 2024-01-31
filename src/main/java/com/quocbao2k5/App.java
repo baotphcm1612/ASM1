@@ -4,13 +4,17 @@ import java.util.Scanner;
 
 public class App
 {
-    private static Company company = new Company();
     private static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
+    private static final int ADD_EMPLOYEE = 1;
+    private static final int PRINT_ALL_EMPLOYEE = 2;
+    private static final int FIND_AN_EMPLOYEE = 3;
+    private static final int DELETE_AN_EMPLOYEE = 4;
+    private static final int UPDATE_INFORMATION = 5;
+    private static final int FIND_EMPLOYEE_SALARY = 6;
+    private static final int SORT_BY_NAME = 7;
+    private static final int SORT_BY_SALARY = 8;
+    private static final int TOP_5_EMPLOYEE = 9;
 
     public static void main( String[] args )
     {
@@ -54,21 +58,19 @@ public class App
 
     public static void selection(int select) {
         switch (select) {
-            case 1:
+            case ADD_EMPLOYEE:
                 menuAddEmployee();
                 try {
                     System.out.print("*   Input key: ");
-                    sc.nextInt();
                     int type = Integer.parseInt(sc.nextLine());
-                    company.addEmployee(type);
-                    System.out.println("Done!");
+                    Company.addEmployee(type);
                 } catch (Exception e) {
                     System.out.println("Wrong type!");
                 }
                 break;
-            case 2:
-                if(!company.getEmployees().isEmpty()) {
-                    for (Employee temp : company.getEmployees()) {
+            case PRINT_ALL_EMPLOYEE:
+                if(!Company.employees.isEmpty()) {
+                    for (Employee temp : Company.employees) {
                         temp.showInfo();
                         System.out.println("**********************************");
                     }
@@ -77,10 +79,10 @@ public class App
                     System.out.println("List is empty!");
                 }
                 break;
-            case 3:
-                if(!company.getEmployees().isEmpty()) {
+            case FIND_AN_EMPLOYEE:
+                if(!Company.employees.isEmpty()) {
                     System.out.print("Input ID employee: ");
-                    Employee temp = company.findEmployee(sc.nextLine());
+                    Employee temp = Company.findEmployee(sc.nextLine());
                     if(temp != null) {
                         temp.showInfo();
                     }
@@ -92,39 +94,50 @@ public class App
                     System.out.println("List is empty!");
                 }
                 break;
-            case 4:
-                System.out.print("Input ID employee: ");
-                company.deleteEmployee(sc.nextLine());
-                break;
-            case 5:
-                if(!company.getEmployees().isEmpty()) {
+            case DELETE_AN_EMPLOYEE:
+                if(!Company.employees.isEmpty()) {
                     System.out.print("Input ID employee: ");
-                    company.updateInfo(sc.nextLine());
+                    Company.deleteEmployee(sc.nextLine());
                 }
                 else {
                     System.out.println("List is empty!");
                 }
                 break;
-            case 6:
-                System.out.print("Input salary: ");
-                company.filterEmployeeBySalary(Double.parseDouble(sc.nextLine()));
+            case UPDATE_INFORMATION:
+                if(!Company.employees.isEmpty()) {
+                    System.out.print("Input ID employee: ");
+                    Company.updateInfo(sc.nextLine());
+                }
+                else {
+                    System.out.println("List is empty!");
+                }
                 break;
-            case 7:
-                company.sortByName();
+            case FIND_EMPLOYEE_SALARY:
+                if(!Company.employees.isEmpty()) {
+                    System.out.print("Input salary: ");
+                    Company.filterEmployeeBySalary(Double.parseDouble(sc.nextLine()));
+                }
+                else {
+                    System.out.println("List is empty!");
+                }
                 break;
-            case 8:
-                company.sortBySalary();
+            case SORT_BY_NAME:
+                Company.sortByName();
                 break;
-            case 9:
-                company.sortBySalary();
+            case SORT_BY_SALARY:
+                Company.sortBySalary();
+                break;
+            case TOP_5_EMPLOYEE:
+                Company.sortBySalary();
                 for(int i = 0; i < 5; i++) {
-                    if(i == company.getEmployees().size()) {
+                    if(i == Company.employees.size()) {
                         break;
                     }
-                    company.getEmployees().get(i).showInfo();
+                    Company.employees.get(i).showInfo();
                     System.out.println("**********************************");
                 }
                 break;
+            // Exit
             case 0:
                 System.exit(0);
                 break;
@@ -141,5 +154,10 @@ public class App
         System.out.println("*   Key 2: Add a marketing employee      *");
         System.out.println("*   Key 3: Add a manager                 *");
         System.out.println("******************************************");
+    }
+
+    private static void clearScreen() {
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
     }
 }

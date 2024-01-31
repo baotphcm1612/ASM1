@@ -7,16 +7,6 @@ public class Marketing extends Employee {
     private double bonus;
     private double sales;
 
-    public Marketing() {
-
-    }
-
-    public Marketing(String id, String name, double salary, double bonus, double comission) {
-        super(id, name, salary);
-        this.bonus = bonus;
-        this.sales = comission;
-    }
-
     public void setBonus(double bonus) {
         this.bonus = bonus;
     }
@@ -47,14 +37,15 @@ public class Marketing extends Employee {
     }
 
     @Override
-    public Employee setInfo() {
+    public Employee inputInfo() {
         try {
-            super.setInfo();
+            super.inputInfo();
             System.out.print("Input Bonus: ");
             this.setBonus(Double.parseDouble(sc.nextLine()));
-            System.out.print("Input comission: ");
+            System.out.print("Input sales: ");
             this.setSales(Double.parseDouble(sc.nextLine()));
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("Set information failed!");
         }
         return this;
@@ -78,6 +69,5 @@ public class Marketing extends Employee {
         } catch (Exception e) {
             System.out.println("Update information failure!");
         }
-
     }
 }
