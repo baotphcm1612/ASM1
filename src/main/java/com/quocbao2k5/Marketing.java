@@ -8,11 +8,13 @@ public class Marketing extends Employee {
     private double sales;
 
     public void setBonus(double bonus) {
-        this.bonus = bonus;
+        if(bonus != -1612)
+            this.bonus = bonus;
     }
 
     public void setSales(double sales) {
-        this.sales = sales;
+        if(sales != -1612)
+            this.sales = sales;
     }
 
     public double getBonus() {
@@ -24,7 +26,7 @@ public class Marketing extends Employee {
     }
 
     @Override
-    public double calcIncomeMoney() {
+    protected double calcIncomeMoney() {
         return this.getSalary() + this.getBonus() + this.getSales();
     }
 
@@ -37,35 +39,24 @@ public class Marketing extends Employee {
     }
 
     @Override
-    public Employee inputInfo() {
+    public void inputInfo() {
         try {
             super.inputInfo();
-            System.out.print("Input Bonus: ");
-            this.setBonus(Double.parseDouble(sc.nextLine()));
-            System.out.print("Input sales: ");
-            this.setSales(Double.parseDouble(sc.nextLine()));
+            this.setBonus(Optimize.inputNumber(Optimize.ADD, "bonus"));
+            this.setSales(Optimize.inputNumber(Optimize.ADD, "sales"));
         }
         catch (Exception e) {
             System.out.println("Set information failed!");
+            throw e;
         }
-        return this;
     }
 
     @Override
     public void updateInfo() {
         try {
             super.updateInfo();
-            String bonus = null, comission = null;
-            System.out.print("Input bonus: ");
-            bonus = sc.nextLine();
-            System.out.print("Input sales: ");
-            comission = sc.nextLine();
-            if(!bonus.isBlank()) {
-                this.setBonus(Double.parseDouble(bonus));
-            }
-            if(!comission.isBlank()) {
-                this.setSales(Double.parseDouble(comission));
-            }
+            this.setBonus(Optimize.inputNumber(Optimize.UPDATE, "bonus"));
+            this.setSales(Optimize.inputNumber(Optimize.UPDATE, "sales"));
         } catch (Exception e) {
             System.out.println("Update information failure!");
         }

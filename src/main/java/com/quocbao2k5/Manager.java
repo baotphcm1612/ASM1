@@ -7,7 +7,8 @@ public class Manager extends Employee {
     private double resMoney;
 
     public void setResMoney(double resMoney) {
-        this.resMoney = resMoney;
+        if(resMoney != -1612)
+            this.resMoney = resMoney;
     }
 
     public double getResMoney() {
@@ -15,7 +16,7 @@ public class Manager extends Employee {
     }
 
     @Override
-    public double calcIncomeMoney() {
+    protected double calcIncomeMoney() {
         return this.getSalary() + resMoney;
     }
 
@@ -27,26 +28,20 @@ public class Manager extends Employee {
     }
 
     @Override
-    public Employee inputInfo() {
+    public void inputInfo() {
         try {
             super.inputInfo();
-            System.out.print("Input ResMoney: ");
-            this.setResMoney(Double.parseDouble(sc.nextLine()));
+            this.setResMoney(Optimize.inputNumber(Optimize.ADD, "ResMoney"));
         } catch (Exception e) {
             System.out.println("Set information failed!");
         }
-        return this;
     }
 
     @Override
     public void updateInfo() {
         try {
             super.updateInfo();
-            System.out.print("Input ResMoney: ");
-            String ResMoney = sc.nextLine();
-            if(!ResMoney.isBlank()) {
-                this.resMoney = Double.parseDouble(ResMoney);
-            }
+            this.setResMoney(Optimize.inputNumber(Optimize.UPDATE, "ResMoney"));
         } catch (Exception e) {
             System.out.println("Update information failure!");
         }

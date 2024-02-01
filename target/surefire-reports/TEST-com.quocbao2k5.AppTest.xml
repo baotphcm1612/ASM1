@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.quocbao2k5.AppTest" time="0.024" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.quocbao2k5.AppTest" time="0.027" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\QUOCBA~1\AppData\Local\Temp\surefire5907465360707304582\surefirebooter5309635307155505131.jar C:\Users\Quoc Bao SOFT DEV\AppData\Local\Temp\surefire5907465360707304582 2024-01-31T08-53-23_822-jvmRun1 surefire6829857240870577891tmp surefire_012508938100583029234tmp"/>
+    <property name="sun.java.command" value="C:\Users\QUOCBA~1\AppData\Local\Temp\surefire186181135703275584\surefirebooter3424139355007349439.jar C:\Users\Quoc Bao SOFT DEV\AppData\Local\Temp\surefire186181135703275584 2024-02-01T00-05-23_352-jvmRun1 surefire7053165937342932660tmp surefire_0861616183219749315tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="D:\java\asm1\target\test-classes;D:\java\asm1\target\classes;C:\Users\Quoc Bao SOFT DEV\.m2\repository\junit\junit\4.11\junit-4.11.jar;C:\Users\Quoc Bao SOFT DEV\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Quoc Bao SOFT DEV\.m2\repository\com\oracle\database\jdbc\ojdbc10\19.13.0.0.1\ojdbc10-19.13.0.0.1.jar;C:\Users\Quoc Bao SOFT DEV\.m2\repository\com\mysql\mysql-connector-j\8.0.31\mysql-connector-j-8.0.31.jar;C:\Users\Quoc Bao SOFT DEV\.m2\repository\com\google\protobuf\protobuf-java\3.19.4\protobuf-java-3.19.4.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\QUOCBA~1\AppData\Local\Temp\surefire5907465360707304582\surefirebooter5309635307155505131.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\QUOCBA~1\AppData\Local\Temp\surefire186181135703275584\surefirebooter3424139355007349439.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21+35-LTS-2513"/>

@@ -8,15 +8,16 @@ import java.util.List;
 public class Company {
     public static List<Employee> employees = new ArrayList<>();
 
-    private static final int EMPLOYEE = 1;
-    private static final int MARKETING = 2;
-    private static final int MANAGER = 3;
+    private static final byte EMPLOYEE = 1;
+    private static final byte MARKETING = 2;
+    private static final byte MANAGER = 3;
     
-    public static void addEmployee(int type) {
+    public static void addEmployee(byte type) {
         switch (type) {
             case EMPLOYEE:
                 System.out.println("Add employee");
-                Employee employee = new Employee().inputInfo();
+                Employee employee = new Employee();
+                employee.inputInfo();
                 if(employees.add(employee)) {
                     System.out.println("Done!");
                 }
@@ -26,7 +27,8 @@ public class Company {
                 break;
             case MARKETING:
                 System.out.println("Add marketing employee");
-                Employee marketing = new Marketing().inputInfo();
+                Employee marketing = new Marketing();
+                marketing.inputInfo();
                 if(employees.add(marketing)) {
                     System.out.println("Done!");
                 }
@@ -36,7 +38,8 @@ public class Company {
                 break;
             case MANAGER:
                 System.out.println("Add manager");
-                Employee manager = new Manager().inputInfo();
+                Employee manager = new Manager();
+                manager.inputInfo();
                 if(employees.add(manager)) {
                     System.out.println("Done!");
                 }
@@ -115,5 +118,4 @@ public class Company {
             System.out.println("Cannot found employee!");
     }
 
-    
 }

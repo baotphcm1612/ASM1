@@ -4,17 +4,17 @@ import java.util.Scanner;
 
 public class App
 {
-    private static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
+    private static final byte ADD_EMPLOYEE = 1;
+    private static final byte PRINT_ALL_EMPLOYEE = 2;
+    private static final byte FIND_AN_EMPLOYEE = 3;
+    private static final byte DELETE_AN_EMPLOYEE = 4;
+    private static final byte UPDATE_INFORMATION = 5;
+    private static final byte FIND_EMPLOYEE_SALARY = 6;
+    private static final byte SORT_BY_NAME = 7;
+    private static final byte SORT_BY_SALARY = 8;
+    private static final byte TOP_5_EMPLOYEE = 9;
 
-    private static final int ADD_EMPLOYEE = 1;
-    private static final int PRINT_ALL_EMPLOYEE = 2;
-    private static final int FIND_AN_EMPLOYEE = 3;
-    private static final int DELETE_AN_EMPLOYEE = 4;
-    private static final int UPDATE_INFORMATION = 5;
-    private static final int FIND_EMPLOYEE_SALARY = 6;
-    private static final int SORT_BY_NAME = 7;
-    private static final int SORT_BY_SALARY = 8;
-    private static final int TOP_5_EMPLOYEE = 9;
+    private static Scanner sc = new Scanner(System.in).useLocale(Locale.GERMAN);
 
     public static void main( String[] args )
     {
@@ -30,7 +30,7 @@ public class App
     public static void run() {
         menu();
         try {
-            int select = Integer.parseInt(sc.nextLine());
+            byte select = Byte.parseByte(sc.nextLine());
             selection(select);
         } catch (NumberFormatException e) {
             clearScreen();
@@ -56,16 +56,16 @@ public class App
         System.out.print("*   Input key: ");
     }
 
-    public static void selection(int select) {
+    public static void selection(byte select) {
         switch (select) {
             case ADD_EMPLOYEE:
                 menuAddEmployee();
                 try {
                     System.out.print("*   Input key: ");
-                    int type = Integer.parseInt(sc.nextLine());
+                    byte type = Byte.parseByte(sc.nextLine());
                     Company.addEmployee(type);
-                } catch (Exception e) {
-                    System.out.println("Wrong type!");
+                } catch (NumberFormatException e) {
+                    System.out.println("Cannot add an employee");
                 }
                 break;
             case PRINT_ALL_EMPLOYEE:
@@ -107,6 +107,7 @@ public class App
                 if(!Company.employees.isEmpty()) {
                     System.out.print("Input ID employee: ");
                     Company.updateInfo(sc.nextLine());
+                    System.out.println("Done!");
                 }
                 else {
                     System.out.println("List is empty!");
