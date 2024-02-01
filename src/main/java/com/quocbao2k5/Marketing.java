@@ -47,7 +47,6 @@ public class Marketing extends Employee {
         }
         catch (Exception e) {
             System.out.println("Set information failed!");
-            throw e;
         }
     }
 

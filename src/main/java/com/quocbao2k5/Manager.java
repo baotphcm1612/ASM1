@@ -17,7 +17,7 @@ public class Manager extends Employee {
 
     @Override
     protected double calcIncomeMoney() {
-        return this.getSalary() + resMoney;
+        return this.getSalary() + this.getResMoney();
     }
 
     @Override
