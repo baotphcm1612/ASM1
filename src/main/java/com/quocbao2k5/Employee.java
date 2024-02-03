@@ -32,8 +32,9 @@ public class Employee {
     }
 
     public void setName(String name) {
-        if(!id.isBlank())
+        if(!name.isBlank()) {
             this.name = name;
+        }
     }
 
     public void setSalary(double salary) {
@@ -93,9 +94,9 @@ public class Employee {
     public void inputInfo() {
         try {
             this.setId(Optimize.inputID(Optimize.ADD));
+            this.setName(Optimize.inputInfo(Optimize.ADD, Optimize.NAME));
             this.setEmail(Optimize.inputInfo(Optimize.ADD, Optimize.EMAIL));
             this.setPhone(Optimize.inputInfo(Optimize.ADD, Optimize.PHONE));
-            this.setName(Optimize.inputInfo(Optimize.ADD, Optimize.NAME));
             this.setSalary(Optimize.inputNumber(Optimize.ADD, "salary"));
         }
         catch (Exception e) {
@@ -110,9 +111,9 @@ public class Employee {
             System.out.println("------------------------");
             System.out.println("Input new information or press Enter to skip.");
             this.setId(Optimize.inputID(Optimize.UPDATE));
+            this.setName(Optimize.inputInfo(Optimize.UPDATE, Optimize.NAME));
             this.setEmail(Optimize.inputInfo(Optimize.UPDATE, Optimize.EMAIL));
             this.setPhone(Optimize.inputInfo(Optimize.UPDATE, Optimize.PHONE));
-            this.setName(Optimize.inputInfo(Optimize.UPDATE, Optimize.NAME));
             this.setSalary(Optimize.inputNumber(Optimize.UPDATE, "salary"));
         }
         catch (Exception e) {

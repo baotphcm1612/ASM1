@@ -12,7 +12,7 @@ public final class Optimize {
 
     private static Scanner sc = new Scanner(System.in);
 
-    public static String optimizeName(String name) {
+    private static String optimizeName(String name) {
         StringBuilder optimizedName = new StringBuilder();
         String[] splitName = name.trim().toLowerCase().split(" ");
         for (String temp : splitName) {
@@ -21,7 +21,7 @@ public final class Optimize {
         return optimizedName.toString().trim();
     }
 
-    public static boolean isNumber(String number) {
+    private static boolean isNumber(String number) {
         try {
             Double.parseDouble(number);
             return true;
@@ -30,14 +30,26 @@ public final class Optimize {
         }
     }
 
-    public static boolean isEmail(String email) {
+    private static boolean isEmail(String email) {
         String regex = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
         return email.matches(regex);
     }
     
-    public static boolean isPhone(String phone) {
+    private static boolean isPhone(String phone) {
         String regex = "^(?:\\+\\d{1,14}|\\d{1,14})$";
         return phone.matches(regex);
+    }
+
+    private static boolean isExist(String id) {
+        if(Company.employees.isEmpty()) {
+            return false;
+        }
+        for(var x : Company.employees) {
+            if(x.getId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static double inputNumber(byte type, String variableName) {
@@ -78,17 +90,7 @@ public final class Optimize {
         }
     }
 
-    private static boolean isExist(String id) {
-        if(Company.employees.isEmpty()) {
-            return false;
-        }
-        for(var x : Company.employees) {
-            if(x.getId().equals(id)) {
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
     public static String inputID(byte type) {
         String id = null;
@@ -98,10 +100,10 @@ public final class Optimize {
             if(type == UPDATE && id.isBlank()) {
                 return "";
             }
-            if(!isExist(id)) {
+            if(!isExist(id) && id != null && !id.isBlank()) {
                 return id;
             }
-            System.out.println("ID already exists!");
+            System.out.println("ID already exists or invalid!");
         }
     }
 }
